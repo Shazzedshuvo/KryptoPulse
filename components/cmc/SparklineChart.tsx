@@ -40,7 +40,7 @@ export const SparklineChart: React.FC<SparklineChartProps> = ({
   const areaD = `${pathD} L ${width} ${height} L 0 ${height} Z`;
 
   return (
-    <svg width={width} height={height} className="overflow-visible">
+    <svg viewBox={`0 0 ${width} ${height}`} width={width} height={height} className="max-w-full h-auto overflow-visible">
       <defs>
         <linearGradient id={fillGradientId} x1="0" y1="0" x2="0" y2="1">
           <stop offset="0%" stopColor={strokeColor} stopOpacity={0.25} />

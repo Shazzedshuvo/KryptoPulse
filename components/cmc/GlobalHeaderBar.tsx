@@ -8,7 +8,7 @@ export const GlobalHeaderBar: React.FC = () => {
   const stats = GLOBAL_MARKET_STATS;
 
   return (
-    <div className="w-full bg-slate-50 dark:bg-[#080a0f] border-b border-slate-200 dark:border-[#1a2233] text-[11px] select-none text-slate-500 dark:text-slate-400 py-1.5 px-3 md:px-6 transition-colors overflow-x-auto">
+    <div className="w-full bg-slate-50 dark:bg-[#080a0f] border-b border-slate-200 dark:border-[#1a2233] text-[11px] select-none text-slate-500 dark:text-slate-400 py-1.5 px-3 md:px-6 transition-colors overflow-x-auto scrollbar-none [&::-webkit-scrollbar]:hidden">
       <div className="flex items-center justify-between min-w-max gap-6">
         {/* Left Stats items */}
         <div className="flex items-center gap-4 sm:gap-6 font-mono">

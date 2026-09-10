@@ -76,17 +76,17 @@ export const CmcRankingTable: React.FC = () => {
           {/* Table Header */}
           <thead>
             <tr className="border-b border-slate-200 dark:border-[#1a2233] bg-slate-50/70 dark:bg-[#0b0e14]/50 text-slate-500 dark:text-slate-400 text-[11px] font-sans font-bold">
-              <th className="py-3 px-3 w-10 text-center">#</th>
-              <th className="py-3 px-3">Name</th>
-              <th className="py-3 px-3 text-right">Price</th>
-              <th className="py-3 px-3 text-right">1h %</th>
-              <th className="py-3 px-3 text-right">24h %</th>
-              <th className="py-3 px-3 text-right">7d %</th>
-              <th className="py-3 px-3 text-right">Market Cap</th>
-              <th className="py-3 px-3 text-right">24h Volume</th>
-              <th className="py-3 px-3 text-right">Circulating Supply</th>
-              <th className="py-3 px-4 text-center">Last 7 Days</th>
-              <th className="py-3 px-3 text-right">Trade</th>
+              <th className="py-3 px-2 sm:px-3 w-8 sm:w-10 text-center">#</th>
+              <th className="py-3 px-2 sm:px-3">Name</th>
+              <th className="py-3 px-2 sm:px-3 text-right">Price</th>
+              <th className="py-3 px-2 sm:px-3 text-right">24h %</th>
+              <th className="py-3 px-3 text-right hidden xl:table-cell">1h %</th>
+              <th className="py-3 px-3 text-right hidden md:table-cell">7d %</th>
+              <th className="py-3 px-3 text-right hidden sm:table-cell">Market Cap</th>
+              <th className="py-3 px-3 text-right hidden lg:table-cell">24h Volume</th>
+              <th className="py-3 px-3 text-right hidden 2xl:table-cell">Circulating Supply</th>
+              <th className="py-3 px-4 text-center hidden md:table-cell">Last 7 Days</th>
+              <th className="py-3 px-2 sm:px-3 text-right">Trade</th>
             </tr>
           </thead>
 
@@ -110,13 +110,13 @@ export const CmcRankingTable: React.FC = () => {
                 >
                   {/* Rank & Star */}
                   <td
-                    className="py-3 px-3 text-center"
+                    className="py-3 px-2 sm:px-3 text-center"
                     onClick={(e) => {
                       e.stopPropagation();
                       toggleWatchlist(coin.id);
                     }}
                   >
-                    <div className="flex items-center justify-center gap-1.5">
+                    <div className="flex items-center justify-center gap-1 sm:gap-1.5">
                       <Star
                         className={`h-3.5 w-3.5 transition-colors cursor-pointer ${
                           isWatched
@@ -124,19 +124,19 @@ export const CmcRankingTable: React.FC = () => {
                             : 'text-slate-300 dark:text-slate-600 hover:text-amber-400'
                         }`}
                       />
-                      <span className="text-slate-400 text-[11px] font-mono">{coin.rank}</span>
+                      <span className="text-slate-400 text-[10px] sm:text-[11px] font-mono">{coin.rank}</span>
                     </div>
                   </td>
 
                   {/* Name & Symbol */}
-                  <td className="py-3 px-3">
-                    <div className="flex items-center gap-2.5 font-sans font-bold">
-                      <img src={coin.logo} alt={coin.name} className="h-6 w-6 rounded-full shrink-0" />
-                      <div className="flex items-baseline gap-1.5">
-                        <span className="text-slate-900 dark:text-white group-hover:text-blue-500 transition-colors">
+                  <td className="py-3 px-2 sm:px-3">
+                    <div className="flex items-center gap-2 sm:gap-2.5 font-sans font-bold">
+                      <img src={coin.logo} alt={coin.name} className="h-5 w-5 sm:h-6 sm:w-6 rounded-full shrink-0" />
+                      <div className="flex flex-col sm:flex-row sm:items-baseline sm:gap-1.5 min-w-0">
+                        <span className="text-slate-900 dark:text-white group-hover:text-blue-500 transition-colors truncate max-w-[90px] sm:max-w-none text-xs">
                           {coin.name}
                         </span>
-                        <span className="text-[11px] font-mono font-medium text-slate-400 uppercase">
+                        <span className="text-[10px] sm:text-[11px] font-mono font-medium text-slate-400 uppercase">
                           {coin.symbol}
                         </span>
                       </div>
@@ -144,26 +144,15 @@ export const CmcRankingTable: React.FC = () => {
                   </td>
 
                   {/* Price */}
-                  <td className="py-3 px-3 text-right font-bold text-slate-900 dark:text-white">
+                  <td className="py-3 px-2 sm:px-3 text-right font-bold text-slate-900 dark:text-white whitespace-nowrap text-xs">
                     {currencySymbol}
                     {convertedPrice < 1
                       ? convertedPrice.toFixed(coin.price < 0.001 ? 7 : 4)
                       : convertedPrice.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                   </td>
 
-                  {/* 1h % */}
-                  <td className="py-3 px-3 text-right">
-                    <span
-                      className={`inline-flex items-center font-semibold text-xs ${
-                        coin.change1h >= 0 ? 'text-emerald-500' : 'text-red-500'
-                      }`}
-                    >
-                      {coin.change1h >= 0 ? '+' : ''}{coin.change1h.toFixed(2)}%
-                    </span>
-                  </td>
-
-                  {/* 24h % */}
-                  <td className="py-3 px-3 text-right">
+                  {/* 24h % (Mobile prioritized) */}
+                  <td className="py-3 px-2 sm:px-3 text-right whitespace-nowrap">
                     <span
                       className={`inline-flex items-center font-semibold text-xs ${
                         coin.change24h >= 0 ? 'text-emerald-500' : 'text-red-500'
@@ -174,8 +163,19 @@ export const CmcRankingTable: React.FC = () => {
                     </span>
                   </td>
 
-                  {/* 7d % */}
-                  <td className="py-3 px-3 text-right">
+                  {/* 1h % (Desktop XL) */}
+                  <td className="py-3 px-3 text-right hidden xl:table-cell">
+                    <span
+                      className={`inline-flex items-center font-semibold text-xs ${
+                        coin.change1h >= 0 ? 'text-emerald-500' : 'text-red-500'
+                      }`}
+                    >
+                      {coin.change1h >= 0 ? '+' : ''}{coin.change1h.toFixed(2)}%
+                    </span>
+                  </td>
+
+                  {/* 7d % (Medium screens) */}
+                  <td className="py-3 px-3 text-right hidden md:table-cell">
                     <span
                       className={`inline-flex items-center font-semibold text-xs ${
                         is7dPositive ? 'text-emerald-500' : 'text-red-500'
@@ -185,8 +185,8 @@ export const CmcRankingTable: React.FC = () => {
                     </span>
                   </td>
 
-                  {/* Market Cap */}
-                  <td className="py-3 px-3 text-right font-semibold text-slate-800 dark:text-slate-200">
+                  {/* Market Cap (Tablet+) */}
+                  <td className="py-3 px-3 text-right font-semibold text-slate-800 dark:text-slate-200 hidden sm:table-cell">
                     {currencySymbol}
                     {convertedCap >= 1e12
                       ? `${(convertedCap / 1e12).toFixed(2)}T`
@@ -195,8 +195,8 @@ export const CmcRankingTable: React.FC = () => {
                       : `${(convertedCap / 1e6).toFixed(2)}M`}
                   </td>
 
-                  {/* 24h Volume */}
-                  <td className="py-3 px-3 text-right">
+                  {/* 24h Volume (Large+) */}
+                  <td className="py-3 px-3 text-right hidden lg:table-cell">
                     <div className="font-semibold text-slate-800 dark:text-slate-200">
                       {currencySymbol}
                       {convertedVol >= 1e9
@@ -208,8 +208,8 @@ export const CmcRankingTable: React.FC = () => {
                     </span>
                   </td>
 
-                  {/* Circulating Supply */}
-                  <td className="py-3 px-3 text-right">
+                  {/* Circulating Supply (2XL) */}
+                  <td className="py-3 px-3 text-right hidden 2xl:table-cell">
                     <div className="text-slate-800 dark:text-slate-200 font-semibold">
                       {coin.circulatingSupply.toLocaleString()} {coin.symbol}
                     </div>
@@ -225,8 +225,8 @@ export const CmcRankingTable: React.FC = () => {
                     )}
                   </td>
 
-                  {/* Last 7 Days Sparkline Chart */}
-                  <td className="py-3 px-4 text-center">
+                  {/* Last 7 Days Sparkline Chart (MD+) */}
+                  <td className="py-3 px-4 text-center hidden md:table-cell">
                     <div className="flex justify-center">
                       <SparklineChart data={coin.sparkline7d} isPositive={is7dPositive} width={130} height={40} />
                     </div>
@@ -234,13 +234,13 @@ export const CmcRankingTable: React.FC = () => {
 
                   {/* Trade Action Link to Pro Terminal */}
                   <td
-                    className="py-3 px-3 text-right font-sans"
+                    className="py-3 px-2 sm:px-3 text-right font-sans"
                     onClick={(e) => e.stopPropagation()}
                   >
                     <Link
                       href={`/trade/${coin.symbol}-USDT`}
                       onClick={() => setActiveSymbol(`${coin.symbol}/USDT`)}
-                      className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-semibold bg-blue-500/10 hover:bg-blue-500/20 text-blue-600 dark:text-blue-400 border border-blue-500/20 transition-all"
+                      className="inline-flex items-center gap-0.5 sm:gap-1 px-2 sm:px-2.5 py-1 rounded-md text-[11px] sm:text-xs font-semibold bg-blue-500/10 hover:bg-blue-500/20 text-blue-600 dark:text-blue-400 border border-blue-500/20 transition-all"
                     >
                       <span>Trade</span>
                       <ChevronRight className="h-3 w-3" />

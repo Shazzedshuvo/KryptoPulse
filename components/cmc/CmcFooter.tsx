@@ -18,9 +18,9 @@ export const CmcFooter: React.FC = () => {
   return (
     <footer className="w-full bg-slate-50 dark:bg-[#080a0f] border-t border-slate-200 dark:border-[#1a2233] text-xs text-slate-500 dark:text-slate-400 select-none transition-colors mt-12">
       <div className="max-w-7xl mx-auto px-4 md:px-6 py-12">
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-8 mb-10">
           {/* Col 1: Brand & Bio */}
-          <div className="col-span-2 space-y-3">
+          <div className="col-span-1 sm:col-span-2 space-y-3">
             <Link href="/" className="flex items-center gap-2.5">
               <div className="h-8 w-8 rounded-xl bg-gradient-to-tr from-cyan-500 via-blue-600 to-indigo-600 flex items-center justify-center text-white font-black text-sm shadow-md shadow-blue-500/20">
                 <Activity className="h-4 w-4 text-white" />
