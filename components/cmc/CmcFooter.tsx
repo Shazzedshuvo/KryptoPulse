@@ -69,7 +69,6 @@ export const CmcFooter: React.FC = () => {
               <li><Link href="/exchanges" className="hover:text-emerald-500">Top Exchanges</Link></li>
               <li><Link href="/settings/api-keys" className="hover:text-emerald-500">API Key Vault</Link></li>
               <li><Link href="/profile" className="hover:text-emerald-500">User Dashboard & P&L</Link></li>
-              <li><Link href="/admin" className="hover:text-emerald-500">Super Admin Panel</Link></li>
               <li><span className="hover:text-emerald-500 cursor-pointer">Terms of Use</span></li>
             </ul>
           </div>

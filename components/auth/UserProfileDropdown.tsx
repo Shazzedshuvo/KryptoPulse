@@ -108,16 +108,6 @@ export const UserProfileDropdown: React.FC = () => {
               <span>Profile & P&L Analytics</span>
             </Link>
 
-            {/* Super Admin Control Panel */}
-            <Link
-              href="/admin"
-              onClick={() => setIsOpen(false)}
-              className="flex items-center gap-2 px-2.5 py-2 rounded-lg bg-purple-500/10 text-purple-600 dark:text-purple-400 font-bold transition-colors"
-            >
-              <Crown className="h-3.5 w-3.5" />
-              <span>Super Admin Panel</span>
-            </Link>
-
             <Link
               href="/deposit"
               onClick={() => setIsOpen(false)}

@@ -351,7 +351,6 @@ export const CmcNavbar: React.FC = () => {
                 { href: '/portfolio', label: 'Portfolio Tracker', icon: PieChart },
                 { href: '/markets', label: 'Markets Directory', icon: TrendingUp },
                 { href: '/profile', label: 'User Dashboard & P&L', icon: BarChart3 },
-                { href: '/admin', label: 'Super Admin Control', icon: ShieldCheck },
                 { href: '/settings/api-keys', label: 'API Key Management', icon: Zap },
               ].map((item) => {
                 const Icon = item.icon;
