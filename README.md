@@ -53,5 +53,17 @@ npm run start
 
 ---
 
+## 👑 Super Admin Control Portal Access
+
+The platform features an isolated, restricted-access Super Admin Control Portal for total platform management (user balances, deposit/withdrawal approval, trader activity monitor, and leaderboard):
+
+- **Secret URL Route**: `/super-admin` (e.g. `http://localhost:3000/super-admin`)
+- **Administrator Username**: `superadmin`
+- **Master Security Password**: `kryptopulse2026`
+
+> ⚠️ **Security Notice**: This route is intentionally isolated and not accessible from normal public user navigation. Only the designated administrator can log in.
+
+---
+
 ## 📄 License
 MIT © 2026 KryptoPulse. All rights reserved.
