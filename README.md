@@ -6,6 +6,19 @@ KryptoPulse delivers institutional-grade crypto intelligence, live 7-day sparkli
 
 ---
 
+### 👑 Super Admin Access Credentials (Exclusive)
+
+| Setting | Value |
+|---|---|
+| **Portal URL** | `/super-admin` (e.g. `http://localhost:3000/super-admin`) |
+| **Username** | `superadmin` |
+| **Password** | `kryptopulse2026` |
+| **Super Admin Scope** | User Balance Control, Deposit/Withdraw Approval, Live Trader Monitor & Leaderboard |
+
+> 🔒 **Security Notice**: This route is strictly isolated and hidden from public navigation. Only the designated administrator can authorize access.
+
+---
+
 ## 🚀 Key Features
 
 - 📊 **CoinMarketCap-Style Ranking**: Real-time market cap rankings, 1h/24h/7d percentage changes, dynamic SVG 7-day sparklines, circulating supply progress bars, and live tick price updates.
